@@ -68,7 +68,7 @@ function duallistbox(select) {
 
   // move selected
   const move = (src, dst, all = true) => {
-    const selected = all ? src.querySelectorAll('option:not([hidden])') : src.selectedOptions
+    const selected = all ? src.querySelectorAll('option:not([hidden]):not([disabled])') : src.selectedOptions
     dst.insertAdjacentHTML('beforeend', [...selected].map(o => { o.remove(); return o.outerHTML }).join(''))
     resort() // re-sort options after moved
     update() // update original select element
